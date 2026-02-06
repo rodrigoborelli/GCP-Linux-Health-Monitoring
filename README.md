@@ -1,14 +1,16 @@
 # GCP Linux Health Monitoring
-
-This repo helps you set up a Linux VM in Google Cloud Platform (GCP), practice user and group management, and prepare scripts for health monitoring.
-
+This repository is part of **Month 1 of a 12‑Month Site Reliability Engineering (SRE) Study Plan**.  
+It focuses on building strong **Linux fundamentals**, **basic automation**, and **system health monitoring** on a Google Cloud Platform (GCP) virtual machine.
+---
 ## Contents
-
-- `gcp_vm_setup.sh`: Bash script to provision a VM on GCP using the CLI.
-- `linux_user_group_mgmt.sh`: Script for creating/deleting users and groups on Linux.
-- `diagrams/`: Architecture diagrams.
-- Step-by-step usage instructions.
-
+- `gcp_vm_setup.sh`  
+  Bash script to provision a Linux VM in Google Cloud using the `gcloud` CLI.
+- `linux_user_group_mgmt.sh`  
+  Script demonstrating Linux user and group management operations.
+- `health_monitor.sh`  
+  Bash-based system health monitoring script.
+- `health_monitor.py`  
+  Python-based system health monitoring script (more extensible).
 ---
 
 ## Setup Instructions
@@ -31,6 +33,34 @@ See [linux_user_group_mgmt.sh](./linux_user_group_mgmt.sh) for examples.
 - Assign users to groups.
 - Modify file permissions.
 
+### 3. System Health Monitoring
+The health monitoring scripts collect key system signals that SREs commonly track to understand system reliability.
+
+Monitored Signals
+CPU usage
+Memory usage
+Disk usage (root filesystem)
+Load average
+Timestamp of execution Alerts are generated when predefined thresholds are exceeded.
+
+3.1 Bash Health Monitoring
+File: health_monitor.sh This script:
+
+Collects system metrics using standard Linux tools
+Applies threshold checks
+Outputs alerts when limits are breached Run:
+
+chmod +x health_monitor.sh
+./health_monitor.sh
+
+3.2 Python Health Monitoring
+File: health_monitor.py This version provides the same functionality as the Bash script, but uses Python to enable:
+
+Cleaner logic
+Easier maintenance
+Future integrations (e.g., Slack, email, monitoring systems) Run:
+
+python3 health_monitor.py
 ---
 
 ## Resources
